@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DashboardService } from './dashboard.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class DashboardComponent implements OnInit {
   isNext: string = '';
   currentPageNo: number = 1;
   loading: boolean = true;
-  constructor(private readonly service: DashboardService) {}
+  constructor(private readonly service: DashboardService,private readonly router: Router,) {}
 
   ngOnInit(): void {
     this.getDate(this.currentPageNo);
@@ -55,5 +56,10 @@ export class DashboardComponent implements OnInit {
   previousData() {
     this.loading = true;
     this.getDate(+this.isPrevious.split('=')[1]);
+  }
+
+  openChaccterDetail(user: any) {
+    debugger
+    this.router.navigate(["/dashboard/character", user.url.substr(user.url.length - 2,1)]);
   }
 }

@@ -1,0 +1,17 @@
+<div class="page">
+<div class="card text-center">
+  <div class="card-header">
+    <b> Character Name: {{character?.name}}</b>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Birth Year: {{character?.birth_year}}</h5>
+    <p class="card-text">
+        Features: Hair color {{character?.hair_color}}, skin color {{character?.skin_color}}, eyes color {{character?.eye_color}}
+        
+    </p>
+    <h2>Movies</h2>
+    <span>Movie from swapi : </span>
+    <a class="btn btn-primary m-1" *ngFor="let filmsTitle of filmsTitles">{{filmsTitle.title}}</a>
+  </div>
+</div>
+</div>

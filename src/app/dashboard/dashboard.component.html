@@ -1,0 +1,56 @@
+<div class="page">
+  <div class="row justify-content-end m-1">
+    <div class="col col-md-3">
+      <input
+        type="email"
+        class="form-control"
+        (keydown)="searchData($event)"
+        placeholder="Search character by name"
+      />
+    </div>
+  </div>
+
+  <!-- Skeleton screen -->
+  <div
+    class="title-list__loading-item flex flex-space-between p-1 skeleton-screen"
+    *ngFor="let user of loading ? [1, 2, 3, 4] : []"
+  >
+    <div class="title-list__loading-item--text text-line"></div>
+    <div class="title-list__loading-item--action text-line"></div>
+  </div>
+  <!-- Skeleton screen ends -->
+
+  <div class="list-group align">
+    <a
+      href="#"
+      class="list-group-item list-group-item-action flex-column align-items-start"
+      *ngFor="let user of people"
+    >
+      <div class="d-flex w-100 justify-content-between">
+        <h5 class="mb-1">Name: {{ user.name }}</h5>
+      </div>
+      <p class="mb-1">Gender: {{ user.gender }}</p>
+    </a>
+  </div>
+
+  <div *ngIf="!loading && people && !people.length">
+    <h1>No Result Found</h1>
+  </div>
+
+  <div class="row justify-content-center m-10px" *ngIf="!loading">
+    <mat-icon
+      style="margin: 10px; font-size: xx-large"
+      *ngIf="isPrevious"
+      (click)="previousData()"
+      title="Previous"
+      >keyboard_arrow_left</mat-icon
+    >
+    <mat-icon
+      style="margin: 10px; font-size: xx-large"
+      *ngIf="isNext"
+      (click)="nextData()"
+      title="Next"
+      >keyboard_arrow_right</mat-icon
+    >
+  </div>
+</div>

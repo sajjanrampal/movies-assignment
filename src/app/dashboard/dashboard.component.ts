@@ -36,7 +36,7 @@ export class DashboardComponent implements OnInit {
 
   searchData(event: any) {
     // if (event.key === 'Enter') {
-      this.service.searchPeople(event.currentTarget.value).pipe(debounce(() => interval(50000))).subscribe({
+      this.service.searchPeople(event.currentTarget.value).pipe(debounce(() => interval(500))).subscribe({
         next: (res: any) => {
           debugger
           this.people = res.results;

@@ -66,7 +66,6 @@ export class CharacterComponent implements OnInit {
   openDialog(movie:any) {
     this.service.getTheMovieDetail(movie.id).subscribe({
       next: (res) => {
-        debugger
         this.dialog.open(MovieComponent, {
           height:'80%',
       data: res

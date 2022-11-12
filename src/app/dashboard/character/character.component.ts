@@ -31,7 +31,9 @@ export class CharacterComponent implements OnInit {
          this.swapiFilms = this.character.films;
          this.getFilmsName()
       },
-      error: (err) => {},
+       error: (err) => {
+        console.log(`Opps! An Error occurred, Status Code is ${err.error.status_code}, Message is ${err.error.status_message}`)
+      },
     });
   }
 
@@ -41,7 +43,9 @@ export class CharacterComponent implements OnInit {
         this.filmsTitles = res;
         this.getmoviesFromMovieDbApis(this.filmsTitles)
       },
-      error: (err) => {},
+      error: (err) => {
+        console.log(`Opps! An Error occurred, Status Code is ${err.error.status_code}, Message is ${err.error.status_message}`)
+      },
     });
    
   }
@@ -53,7 +57,9 @@ export class CharacterComponent implements OnInit {
           this.movieTitlesFromTheMoviedbApis = this.movieTitlesFromTheMoviedbApis.concat(element.results)
         });
       },
-      error: (err) => {},
+      error: (err) => {
+        console.log(`Opps! An Error occurred, Status Code is ${err.error.status_code}, Message is ${err.error.status_message}`)
+      },
     });
   }
 
@@ -61,12 +67,12 @@ export class CharacterComponent implements OnInit {
     this.service.getTheMovieDetail(movie.id).subscribe({
       next: (res) => {
         debugger
-       this.dialog.open(MovieComponent, {
+        this.dialog.open(MovieComponent, {
+          height:'80%',
       data: res
     });
       }, error: (err) => {
-        console.log(err.error);
-        alert(`Opps! An Error occurred, Status Code is ${err.error.status_code}, Message is ${err.error.status_message}`)
+        console.log(`Opps! An Error occurred, Status Code is ${err.error.status_code}, Message is ${err.error.status_message}`)
     }})
    
   }

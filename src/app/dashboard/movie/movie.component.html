@@ -1,7 +1,19 @@
 <div class="page">
-    <h1>
-        {{data.title}}
-    </h1>
+    <div class="row">
+        <div class="col col-11">
+            <h1>
+                {{data.title}}
+            </h1>
+
+        </div>
+
+        <div class="col col-1">
+            <mat-icon (click)="onNoClick()">close</mat-icon>
+
+        </div>
+
+    </div>
+    
     <hr>
 
     <div class="row">
@@ -21,6 +33,7 @@
 
            <a class="btn btn-primary m-1" *ngIf="data.homepage" [href]="data.homepage" target="_blank">Homepage</a>
         </div>
+
     </div>
     
     

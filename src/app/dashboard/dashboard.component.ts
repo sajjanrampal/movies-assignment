@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { debounce, interval } from 'rxjs';
 import { DashboardService } from './dashboard.service';
 
 @Component({
@@ -27,25 +28,27 @@ export class DashboardComponent implements OnInit {
         this.isNext = res.next;
         this.loading = false;
       },
-      error: (err) => {},
+      error: (err) => {
+        console.log(`Opps! An Error occurred, Status Code is ${err.error.status_code}, Message is ${err.error.status_message}`)
+      },
     });
   }
 
   searchData(event: any) {
-    if (event.key === 'Enter') {
-      this.service.searchPeople(event.currentTarget.value).subscribe({
+    // if (event.key === 'Enter') {
+      this.service.searchPeople(event.currentTarget.value).pipe(debounce(() => interval(50000))).subscribe({
         next: (res: any) => {
-          debugger;
+          debugger
           this.people = res.results;
           this.isPrevious = '';
           this.isNext = '';
           this.loading = false;
         },
         error: (err) => {
-          debugger;
+         console.log(`Opps! An Error occurred, Status Code is ${err.error.status_code}, Message is ${err.error.status_message}`)
         },
       });
-    }
+    // }
   }
 
   nextData() {
@@ -59,7 +62,6 @@ export class DashboardComponent implements OnInit {
   }
 
   openChaccterDetail(user: any) {
-    debugger
     let userUrl = user.url.split('/');
     let userId = userUrl[userUrl.length -2]
     this.router.navigate(["/dashboard/character",userId]);

@@ -7,6 +7,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { CharacterComponent } from './character/character.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { MovieComponent } from './movie/movie.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -14,6 +16,7 @@ import { CharacterComponent } from './character/character.component';
     ReactiveFormsModule,
     MatIconModule,
     MatFormFieldModule,
+    MatDialogModule,
     RouterModule.forChild([
       {
         path: '',
@@ -25,7 +28,7 @@ import { CharacterComponent } from './character/character.component';
       },
     ]),
   ],
-  declarations: [DashboardComponent, CharacterComponent],
+  declarations: [DashboardComponent, CharacterComponent, MovieComponent],
   providers: [],
 })
 export class DashboardModule {}

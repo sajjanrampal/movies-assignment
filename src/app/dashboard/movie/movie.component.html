@@ -1,0 +1,28 @@
+<div class="page">
+    <h1>
+        {{data.title}}
+    </h1>
+    <hr>
+
+    <div class="row">
+        <div class="col col-md-3">
+            <img src="https://image.tmdb.org/t/p/w500{{data.poster_path}}" alt="banner" width="250px">
+        </div>
+
+          <div class="col">
+            <h3>Overview</h3>
+           <p>{{data.overview}}</p>
+
+            <h3>Status: {{data.status}} on {{data.release_date}}</h3>
+          
+
+           <h3>Popularity: {{data.popularity}}</h3>
+          
+
+           <a class="btn btn-primary m-1" *ngIf="data.homepage" [href]="data.homepage" target="_blank">Homepage</a>
+        </div>
+    </div>
+    
+    
+
+</div>

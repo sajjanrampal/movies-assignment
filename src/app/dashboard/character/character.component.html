@@ -10,8 +10,7 @@
         
     </p>
     <h2>Movies</h2>
-    <span>Movie from swapi : </span>
-    <a class="btn btn-primary m-1" *ngFor="let filmsTitle of filmsTitles">{{filmsTitle.title}}</a>
+    <a class="btn btn-primary m-1" (click)="openDialog(filmsTitle)" *ngFor="let filmsTitle of movieTitlesFromTheMoviedbApis">{{filmsTitle.title}}</a>
   </div>
 </div>
 </div>

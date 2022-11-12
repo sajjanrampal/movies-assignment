@@ -60,6 +60,8 @@ export class DashboardComponent implements OnInit {
 
   openChaccterDetail(user: any) {
     debugger
-    this.router.navigate(["/dashboard/character", user.url.substr(user.url.length - 2,1)]);
+    let userUrl = user.url.split('/');
+    let userId = userUrl[userUrl.length -2]
+    this.router.navigate(["/dashboard/character",userId]);
   }
 }

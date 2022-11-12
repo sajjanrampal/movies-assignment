@@ -7,6 +7,7 @@ import { ApiService } from '../core/services/api.service';
 export class DashboardService {
   constructor(private readonly apiService: ApiService) {}
 
+  //get character from swapi apis
   getPeople(currentPageNo: number) {
     return this.apiService.sendRequest({
       method: 'get',
@@ -15,6 +16,7 @@ export class DashboardService {
     });
   }
 
+  //get character BY SEARCH KEYWORD from swapi apis
   searchPeople(keyword: string) {
     return this.apiService.sendRequest({
       method: 'get',

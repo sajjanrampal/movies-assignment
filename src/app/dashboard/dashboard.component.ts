@@ -17,9 +17,11 @@ export class DashboardComponent implements OnInit {
   constructor(private readonly service: DashboardService,private readonly router: Router,) {}
 
   ngOnInit(): void {
+    //call character with default page no 1 
     this.getDate(this.currentPageNo);
   }
 
+  //GET Character with page no 
   getDate(currentPageNo: number) {
     this.service.getPeople(currentPageNo).subscribe({
       next: (res: any) => {
@@ -34,6 +36,7 @@ export class DashboardComponent implements OnInit {
     });
   }
 
+  //Get Character from the search bar.
   searchData(event: any) {
     // if (event.key === 'Enter') {
       this.service.searchPeople(event.currentTarget.value).pipe(debounce(() => interval(500))).subscribe({
@@ -51,16 +54,19 @@ export class DashboardComponent implements OnInit {
     // }
   }
 
+  //next page of character
   nextData() {
     this.loading = true;
     this.getDate(+this.isNext.split('=')[1]);
   }
 
+  //next previous of character
   previousData() {
     this.loading = true;
     this.getDate(+this.isPrevious.split('=')[1]);
   }
 
+  //Open the single character details screen
   openChaccterDetail(user: any) {
     let userUrl = user.url.split('/');
     let userId = userUrl[userUrl.length -2]
